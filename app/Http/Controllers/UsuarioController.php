@@ -53,23 +53,21 @@ class UsuarioController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return boolean true
      */
     public function show($id)
     {
-        //
+        return true;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  User $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $usuario)
     {
-        $usuario = User::findOrFail($id);
-
         return view('usuarios.edit')->with('usuario', $usuario);
     }
 
