@@ -44,13 +44,11 @@ class ServicoController extends Controller
 
     /**
      * Exibe o formulário para edição de um Serviço.
-     * @param int $id
+     * @param Servico $servico
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(int $id)
+    public function edit(Servico $servico)
     {
-        $servico = Servico::findOrFail($id);
-
         return view('servicos.edit')->with('servico', $servico);
     }
 
