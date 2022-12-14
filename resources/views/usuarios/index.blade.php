@@ -20,6 +20,7 @@
   <tr>
     <th scope="col">ID</th>
       <th scope="col">Nome</th>
+      <th scope="col">Email </th>
         <th scope="col">Ações</th>
   </tr>
   </thead>
@@ -30,6 +31,7 @@
          <tr>
            <th>{{$usuario->id}}</th>
            <td>{{$usuario->name}} </td>
+           <td>{{$usuario->email}}</td>
             <td>
               <a href="{{ route('usuarios.edit', $usuario)}}" class="btn btn-primary">Editar</a>
               <form action="{{route('usuarios.destroy', $usuario)}}" style="display:inline;" method="post">
