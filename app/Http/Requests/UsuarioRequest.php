@@ -25,11 +25,21 @@ class UsuarioRequest extends FormRequest
     {
 
 
-        $idToIgnore = $this->route('usuario');
+
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . $idToIgnore],
+            'email' => ['required', 'string', 'email', 'max:255', $this->validacaoCampoUnico('email')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
+    }
+
+    protected function validacaoCampoUnico(string $campo)
+    {
+        $campoUnico = 'unique:App\Models\User,' . $campo;
+        if ($this->isMethod('PUT') || $this->isMethod('PATCH')) {
+            $campoUnico = $campoUnico . ',' . $this->route('usuario');
+        }
+
+        return $campoUnico;
     }
 }
